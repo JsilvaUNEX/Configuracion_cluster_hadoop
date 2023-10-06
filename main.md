@@ -409,3 +409,26 @@ Salida:
 Acceso al namenode: [http://ip-maquina:9870](http://ip-maquina:9870)  
 Acceso al datanode: [http://ip-maquina:9864](http://ip-maquina:9864)  
 Acceso al gestor de recursos [http://ip-maquina:8088](http://ip-maquina:8088)
+
+## Subida de archivo a HDFS
+En este caso se va a subir una imagen de ubuntu.
+Creamos un directorio en HDFS en este caso llamado datos:
+```
+hadoop fs -mkdir /datos
+```
+Movemos la imagen a la carpeta hadoop:
+```
+sudo mv ruta_del_archivo /home/hadoop
+```
+Se inicia sesión y se le da permisos:
+```
+sudo chown hadoop:hadoop ubuntu.iso
+```
+Ahora se sube el archivo a HDFS:
+```
+hdfs dfs -copyFromLocal ubuntu.iso /datos
+```
+Se puede comprobar que se ha subido con este comando:
+```
+hadoop fs -ls /datos
+```
