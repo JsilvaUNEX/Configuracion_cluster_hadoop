@@ -400,7 +400,7 @@ Salida:
 También se puede comprobar en las esclavas:
 Salida:
 > 5854 DataNode 
-5156 jps
+> 5156 Jps
 
 ## Acceso a través de interfaz web
 Acceso al namenode: [http://ip-maquina:9870](http://ip-maquina:9870)  
