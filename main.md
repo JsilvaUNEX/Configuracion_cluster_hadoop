@@ -397,7 +397,10 @@ Salida:
 5326 SecondaryNameNode  
 5151 DataNode
 
-También se puede comprobar en las esclavas:
+También se puede comprobar en las esclavas
+```
+jps
+```
 Salida:
 > 5854 DataNode 
 > 5156 Jps
