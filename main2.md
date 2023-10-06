@@ -300,6 +300,45 @@ y añadimos esto:
 
 **Hemos terminado de configurar Hadoop**
 
+## Clonación y máquinas esclavas
+
+Al ya tener configurada la máquina se hace una clonación completa 2 veces para tener 2 máquinas esclavas.
+Se inserta el nombre de cada máquina virtual para distinguir entre ellas:
+```
+sudo nano /etc/hostname
+```
+Actualizar para que tenga efecto:
+```
+sudo reboot
+```
+
+Se genera un clave SSH:
+```
+ssh-keygen -t rsa
+```
+Se copia esta clave SSH en todos los usuarios:
+```
+ssh-copy-id hadoopuser@maestro-hadoop
+ssh-copy-id hadoopuser@esclavo1-hadoop
+ssh-copy-id hadoopuser@esclavo2-hadoop
+```
+
+En el maestro-haddop editamosel archivo workers
+```
+sudo nano /usr/local/hadoop/etc/hadoop/workers
+```
+Se añade el nombre de las esclavas:
+```
+esclavo1-hadoop
+esclavo2-hadoop
+```
+
+Ahora copiamos la configuración del maestro a los esclavos:
+```
+scp /usr/local/hadoop/etc/hadoop/* esclavo1-hadoop:/usr/local/hadoop/etc/hadoop/
+scp /usr/local/hadoop/etc/hadoop/* esclavo2-hadoop:/usr/local/hadoop/etc/hadoop/
+```
+
 ## Preparación del disco distribuido
 Una vez instalado y configurado _hadoop_ debemos formatear el disco, para ello:
 ```
@@ -357,6 +396,11 @@ Salida:
 5850 Jps  
 5326 SecondaryNameNode  
 5151 DataNode
+
+También se puede comprobar en las esclavas:
+Salida:
+> 5854 DataNode 
+5156 jps
 
 ## Acceso a través de interfaz web
 Acceso al namenode: [http://ip-maquina:9870](http://ip-maquina:9870)  
