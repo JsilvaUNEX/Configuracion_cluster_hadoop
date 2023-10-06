@@ -181,7 +181,7 @@ El archivo "core-site.xml" en Hadoop es un archivo de configuración importante 
 
 4. **Configuración de propiedades generales:** Además de las configuraciones específicas de HDFS, también puedes definir propiedades generales de Hadoop en este archivo, como puertos de red y ubicaciones de archivos de registro.
 
-Editamos el fichero core-site.xml
+Editamos el fichero core-site.xml añadiendo la ip de la máquina maestra con el puerto 9000 para definir la ubicación del NameNode del cluster Hadoop.
 ```
 sudo nano $HADOOP_HOME/etc/hadoop/core-site.xml
 ```
@@ -190,8 +190,7 @@ y añadimos esto:
  <configuration>  
    <property>  
       <name>fs.default.name</name>  
-      <value>hdfs://0.0.0.0:9000</value>  
-      <description>The default file system URI</description>  
+      <value>hdfs://192.168.56.101:9000</value>    
    </property>  
  </configuration>
 ```
@@ -212,7 +211,7 @@ El archivo "hdfs-site.xml" en Hadoop es un archivo de configuración utilizado p
 
 6. **Configuración de nodos secundarios:** HDFS utiliza nodos secundarios para mejorar el rendimiento y la integridad de los sistemas de archivos. Puedes definir la ubicación de estos nodos y otras configuraciones relacionadas con ellos en "hdfs-site.xml".
 
-Editamos el fichero hdfs-site.xml
+Editamos el fichero hdfs-site.xml añadiendo el número de replicación, en este caso 2.
 ```
 sudo nano $HADOOP_HOME/etc/hadoop/hdfs-site.xml
 ```
@@ -221,7 +220,7 @@ y añadimos esto:
  <configuration>
     <property>
        <name>dfs.replication</name>
-       <value>1</value>
+       <value>2</value>
     </property>
     <property>
        <name>dfs.name.dir</name>
@@ -230,6 +229,10 @@ y añadimos esto:
     <property>
        <name>dfs.data.dir</name>
        <value>file:///home/hadoop/hdfs/datanode</value>
+    </property>
+    <property>
+       <name>dfs.namenode.datanode.registration.ip-hostname-check</name>
+       <value>false</value>
     </property>
  </configuration>
 ```
