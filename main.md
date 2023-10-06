@@ -190,7 +190,7 @@ y añadimos esto:
  <configuration>  
    <property>  
       <name>fs.default.name</name>  
-      <value>hdfs://192.168.56.101:9000</value>    
+      <value>hdfs://XXX.XXX.XXX.XXX:9000</value>    
    </property>  
  </configuration>
 ```
