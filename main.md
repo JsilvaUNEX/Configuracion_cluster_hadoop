@@ -402,8 +402,8 @@ También se puede comprobar en las esclavas
 jps
 ```
 Salida:
-> 5854 DataNode 
-> 5156 Jps
+> 5049 DataNode  
+5857 Jps  
 
 ## Acceso a través de interfaz web
 Acceso al namenode: [http://ip-maquina:9870](http://ip-maquina:9870)  
