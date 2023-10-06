@@ -412,6 +412,7 @@ Acceso al gestor de recursos [http://ip-maquina:8088](http://ip-maquina:8088)
 
 ## Subida de archivo a HDFS
 En este caso se va a subir una imagen de ubuntu.
+
 Creamos un directorio en HDFS en este caso llamado datos:
 ```
 hadoop fs -mkdir /datos
