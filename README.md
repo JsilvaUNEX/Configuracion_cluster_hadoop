@@ -1,1 +1,0 @@
-# Configuracion_cluster_hadoop
